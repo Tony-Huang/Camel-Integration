@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="errorCatchProcessor" class="com.hsbc.amh.gbb.processor.exception.BusinessErrorCatchProcessor"/>
+    <bean id="errorHandleProcessor" class="com.hsbc.amh.gbb.processor.exception.ErrorHandleProcessor"/>
+
+    <bean id="errorHandler" class="org.apache.camel.builder.DeadLetterChannelBuilder">
+        <property name="deadLetterUri" value="bean:errorHandleProcessor"/>
+    </bean>
+
+    <import resource="classpath:/META-INF/spring/hsbc-gbb-test-*.xml" />
+
+</beans>
