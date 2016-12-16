@@ -1,0 +1,13 @@
+# Ignore Build and Release Folders
+bin/
+target/
+
+
+# Ignore Other files and folders
+.idea/
+
+# Ignore Executables or generated artifacts
+*.class
+*.iml
+*.jar
+*.war
